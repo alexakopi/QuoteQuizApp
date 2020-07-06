@@ -29,8 +29,8 @@
             <h1>Quiz: Guess the author of quote!</h1>
             {{#unless finished}}
                 <ul class="questions">
-                    <h2> {{questionCounter}} / {{count}}</h2>
-                    <li class="question"><q>{{this.current.question}}</q>
+                    <h2> {{questionCounter}} / {{count}} </h2>
+                    <li class="question"><q>"{{this.current.question}}"</q>
                         <ul class="answers">
                             {{#if (isBinary)}}
                             <li class="answer answer-binary" data-id="{{this.current.answers.0.id}}">{{this.current.answers.0.answer}}</li>
@@ -45,9 +45,9 @@
                         <div class="message">
                             {{#if ( isAnswered )}}
                                 {{#if this.current.correct }}
-                                    <span class="incorrect">Correct! The right answer is: {{this.current.answer}} </span>
+                                    <span class="incorrect">Correct! The right answer is: <span class="c-answer">{{this.current.answer}}</span> </span>
                                 {{else}}
-                                    <span class="correct">Sorry, you are wrong! The right answer is: {{this.current.answer}}</span>
+                                    <span class="correct">Sorry, you are wrong! The right answer is: <span class="c-answer">{{this.current.answer}}</span> </span>
                                 {{/if}}
                             {{/if}}
                         </div>

@@ -7,7 +7,7 @@ header('Content-Type: application/json');
 
 	// include database and object files
 	include_once '../config/database.php';
-	include_once '../objects/questions.php';
+	include_once '../objects/question.php';
 
 // database and product object
 	$database = new Database();
