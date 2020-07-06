@@ -22,22 +22,18 @@ $num = $qdata->rowCount();
 if($num>0){
 
 	// questions array
-	$questions_arr["setting"] = [];
+	$settings_arr["settings"] = [];
 
 	while ($row = $qdata->fetch(PDO::FETCH_ASSOC)){
 		extract($row);
-		$questions_arr["settings"] []=[
-			"id" => $id,
-			"name" => $name,
-			"value" => $value,
-		];
+		$settings_arr["settings"] [$name]=$value;
 	}
 
 	// set response code - 200 OK
 	http_response_code(200);
 
 	// show questions data in json format
-	echo json_encode($questions_arr);
+	echo json_encode($settings_arr);
 }
 else{
 

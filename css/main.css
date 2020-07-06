@@ -1,0 +1,128 @@
+body{
+    background-color: #add8e659;
+    font-family: Arial;
+}
+.main{
+    padding: 50px 0;
+    display: grid;
+    grid-row-gap: 20px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+            "header"
+            "main";
+}
+nav{
+    grid-area: header;
+    display: grid;
+    grid-template-columns: 200px 200px;
+    justify-self: center;
+    border-bottom: 4px solid #808080;
+}
+nav span{
+    font-size: 25px;
+    cursor: pointer;
+    background-color: #212121;
+    color: #fff;
+    padding: 10px;
+}
+nav span.active{
+    background-color: #808080;
+}
+.page{
+    grid-area:main;
+    display: grid;
+    grid-template-areas:
+            "top"
+            "middle"
+            "bottom";
+    grid-template-columns: 1fr;
+    justify-self: center;
+}
+.page h1{
+    grid-area: top;
+    font-size: 35px;
+    margin-bottom: 20px;
+    text-align: center
+}
+.page ul.questions{
+    grid-area: middle;
+    max-width: 600px;
+}
+.page ul.questions > li{
+    font-size: 30px;
+    font-style: italic;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 20px;
+    margin-top: 10px;
+}
+.quiz-button{
+    display: inline-block;
+    padding: 8px;
+    margin: 20px auto;
+    font-size: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: grey;
+}
+.page ul.answers {
+    margin: 30px 0 10px 0;
+}
+.page ul.answers > li.answer-binary{
+    cursor: default;
+    background-color: initial;
+    color: initial;
+    margin-top: 0px;
+    font-style: initial;
+}
+
+.page ul.answers > li{
+    font-size: 25px;
+    display: inline-block;
+    background-color: #808080;
+    color: #ffffff;
+    padding: 5px 15px;
+    border-radius: 15px;
+    margin-top: 10px;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+}
+.page ul.answers .wrong{
+    background-color: red;
+}
+.page ul.answers .correct{
+    background-color: green;
+}
+.page ul.answers > span{
+    display: inline-block;
+    padding: 8px;
+    margin: 5px 0px 5px 15px;
+    font-size: 20px;
+    width: 50px;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: grey;
+}
+.page .score{
+    grid-area: bottom;
+    margin-top: 20px;
+    font-size: 25px;
+    text-align: center;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.page .settings{
+    grid-area: middle;
+}
+.page .setting{
+    font-size: 25px;
+    text-align: center;
+}

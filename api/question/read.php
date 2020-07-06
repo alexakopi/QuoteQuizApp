@@ -30,7 +30,6 @@ if($num>0){
 			$questions_arr["questions"] [$id] ["answers"] []= [
 				"id" => $answer_id,
 				"answer" => html_entity_decode($answer),
-				"is_right" => $is_right
 			];
 		}else{
 			$questions_arr["questions"] [$id] = [
@@ -40,12 +39,20 @@ if($num>0){
 					[
 						"id" => $answer_id,
 						"answer" => html_entity_decode($answer),
-						"is_right" => $is_right
 					]
 				]
 			];
 		}
 	}
+
+	shuffle($questions_arr["questions"]);
+	foreach ($questions_arr["questions"] as $key => $value ){
+		$arr = $value["answers"];
+		shuffle($arr);
+		$questions_arr["questions"][$key]["answers"] = $arr;
+		$item["answers"] = $arr;
+	}
+	$questions_arr["questions"] = array_slice( $questions_arr["questions"],0,10);
 
 	// set response code - 200 OK
 	http_response_code(200);
@@ -54,7 +61,6 @@ if($num>0){
 	echo json_encode($questions_arr);
 }
 else{
-
 	// set response code - 404 Not found
 	http_response_code(404);
 

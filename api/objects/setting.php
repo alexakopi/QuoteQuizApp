@@ -34,21 +34,20 @@ class Setting {
 	// update the setting
 	public function update(){
 
-		$this->id=htmlspecialchars(strip_tags($this->id));
 		$this->name=htmlspecialchars(strip_tags($this->name));
 		$this->value=htmlspecialchars(strip_tags($this->value));
 
-		if( boolval( $this->id ) ){
+		if( isset($this->name) ){
 			// update query 1
 			$query = "UPDATE
             " . $this->table . "
             SET
                 value = :value
             WHERE
-                id = :id";
+                name = :name";
 			// prepare query statement
 			$stmt = $this->conn->prepare($query);
-			$stmt->bindParam(':id', $this->id);
+			$stmt->bindParam(':name', $this->name);
 			$stmt->bindParam(':value', $this->value);
 
 			// execute the query

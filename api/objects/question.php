@@ -93,5 +93,25 @@ class Question{
 		return $qdata;
 	}
 
+	// get correct
+	public function getCorrect(){
+
+		$this->id=htmlspecialchars(strip_tags($this->id));
+
+		// select query
+		$query = "SELECT 
+				  answer 
+				  FROM `".$this->answers_table."`
+				  WHERE question_id =".$this->id." AND is_right = 1";
+
+		// prepare query statement
+		$qdata = $this->conn->prepare($query);
+
+		// execute query
+		$qdata->execute();
+
+		return $qdata;
+	}
+
 }
 ?>

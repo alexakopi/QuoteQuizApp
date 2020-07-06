@@ -15,7 +15,6 @@ $setting = new Setting($db);
 
 $data = json_decode(file_get_contents("php://input"));
 
-$setting->id = $data->id;
 $setting->name = $data->name;
 $setting->value = $data->value;
 

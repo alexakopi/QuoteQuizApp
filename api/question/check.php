@@ -5,27 +5,31 @@ header("Access-Control-Allow-Methods: GET");
 header("Access-Control-Allow-Credentials: true");
 header('Content-Type: application/json');
 
-// include database and object files
-include_once '../config/database.php';
-include_once '../objects/question.php';
+	// include database and object files
+	include_once '../config/database.php';
+	include_once '../objects/questions.php';
 
 // database and product object
-$database = new Database();
-$db = $database->getConnection();
+	$database = new Database();
+	$db = $database->getConnection();
 
 // initialize object
-$question = new Question($db);
+	$question = new Question($db);
 
-$question->id = isset($_GET['id']) ? $_GET['id'] : die();
+	$question->id = isset($_GET['id']) ? $_GET['id'] : die();
 
-$answer = isset($_GET['answer']) ? $_GET['answer'] : die();
+	$answer = isset($_GET['answer']) ? $_GET['answer'] : die();
 
-$data = $question->check($answer);
+	$data = $question->check($answer);
 
-$row = $data->fetch(PDO::FETCH_ASSOC);
+	$row ["is_right"]= $data->fetch(PDO::FETCH_ASSOC)["is_right"];
+
+	$data = $question->getCorrect();
+	$row ["answer"]= $data->fetch(PDO::FETCH_ASSOC)["answer"];
+
 
 // set response code - 200 OK
-http_response_code(200);
+	http_response_code(200);
 
 // show questions data in json format
-echo json_encode($row);
+	echo json_encode($row);
